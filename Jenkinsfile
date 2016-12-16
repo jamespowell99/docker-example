@@ -9,12 +9,12 @@ node("docker") {
     
         stage "build"
 	def tag = "powtechconsulting/mydockerexample"
-        def app = docker.build ${tag} 
+        def app = docker.build tag 
     
         stage "publish"
         app.push 'master'
         app.push "${commit_id}"
 
-        currentBuild.displayName += ${ - tag - $commit_id}
+        currentBuild.displayName += "${ - tag - $commit_id}"
     }
 }
