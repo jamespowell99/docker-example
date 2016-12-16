@@ -1,5 +1,5 @@
 node("docker") {
-    docker.withRegistry('<<your-docker-registry>>', '<<your-docker-registry-credentials-id>>') {
+    docker.withRegistry() {
     
         git url: "<<your-git-repo-url>>", credentialsId: '<<your-git-credentials-id>>'
     
