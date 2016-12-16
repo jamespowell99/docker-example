@@ -1,5 +1,5 @@
 node("docker") {
-    docker.withRegistry("https://registry.hub.docker.com") {
+    docker.withRegistry("https://registry.hub.docker.com", "dockerhub") {
     
         git url: "https://github.com/jamespowell99/docker-example.git"
     
@@ -8,7 +8,7 @@ node("docker") {
         println commit_id
     
         stage "build"
-        def app = docker.build "your-project-name"
+        def app = docker.build "powtechconsulting/mydockerexample"
     
         stage "publish"
         app.push 'master'
