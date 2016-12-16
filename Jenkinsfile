@@ -1,5 +1,5 @@
 node("docker") {
-    docker.withRegistry("docker.io") {
+    docker.withRegistry("https://registry.hub.docker.com") {
     
         git url: "https://github.com/jamespowell99/docker-example.git"
     
