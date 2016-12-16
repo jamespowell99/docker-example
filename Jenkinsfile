@@ -8,12 +8,13 @@ node("docker") {
         println commit_id
     
         stage "build"
-        def app = docker.build "powtechconsulting/mydockerexample"
+	def tag = "powtechconsulting/mydockerexample"
+        def app = docker.build ${tag} 
     
         stage "publish"
         app.push 'master'
         app.push "${commit_id}"
 
-        currentBuild.displayName = "myTest123"
+        currentBuild.displayName += ${ - $tag - $commit_id}
     }
 }
